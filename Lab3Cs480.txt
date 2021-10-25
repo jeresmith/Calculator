@@ -1,0 +1,21 @@
+How to run java project from command line
+How to get a downloadable icon for desktop to click and run the function
+
+Page about why GitHub is better
+
+He’ll test if a + c should output error.
+You can test it early with him to check 
+
+Make trello board for cs480 project
+
+Shunting yard algorithm for reading math from calculator
+
+Need functions to make sure string is valid
+
+ - all characters are in the hash map CHECK
+ - parenthesis make sense CHECK
+ - decimals make sense (decimal has number either to left or right). CHECK
+ - there's a number in between most functions except trig functions which just needs one after CHECK
+ - validate */+- aren't touching one another except CHECK
+ - how to check if (1+1)(1+1) if two parenthesis are touching each other to multiply Shuntting yard algorithm might take care of this one also
+ - ()-() how to check parenthesis have number in them. Create function making sure there's number in side. ACTUALLY SHUNTING YARD ALGORTHIM WILL CHECK FOR THIS ONE
