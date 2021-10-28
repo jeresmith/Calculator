@@ -7,10 +7,10 @@ public class Main {
          StringChecking c = new StringChecking();
          ShuntingYard s = new ShuntingYard();
 
-         String ss = "1+1+2/3";
-         Queue<String> q = s.convertString(ss);
-         Queue<String> l = s.runShuntingYard(ss);
-         System.out.println(q);
-
+         String ss = "-1-1/2";
+         if(c.checkForAll(ss)){
+             Queue<String> l = s.runShuntingYard(ss);
+             System.out.println(l);
+         }
     }
 }

@@ -39,13 +39,13 @@ class StringChecking
        operators.add('*');
        operators.add('^');
    }
-   public void checkForAll(String cur){
+   public boolean checkForAll(String cur){
        boolean check = true;
        if (!checkValid(cur))
        {
            System.out.println("checkValid Failed");
            check = false;
-           return;
+
        }
        if (!balanacedParenthesis(cur))
        {
@@ -63,10 +63,7 @@ class StringChecking
            check = false;
        }
 
-       if(check)
-       {
-           System.out.println("All TESTS PASSED!");
-       }
+       return check;
 
    }
 
@@ -175,15 +172,14 @@ class StringChecking
         {
             char c = cur.charAt(i);
 
-            if(operators.contains(c)) {
-                if(i == 0 || i == cur.length() - 1)
+            if (operators.contains(c)) {
+                if (i == 0 || i == cur.length() - 1)
                 {
                     return false;
                 }
 
                 else if (!Character.isDigit(cur.charAt(i - 1)) || (!Character.isDigit(cur.charAt(i + 1))
                         && cur.charAt(i + 1) != '-') ){
-
                     return false;
                 }
             }
@@ -191,7 +187,7 @@ class StringChecking
             {
                 if(i == cur.length() - 1){
                     return false;
-                } else if (!Character.isDigit(cur.charAt(i + 1)) || !isLeftParenthesis(cur.charAt(i + 1))){
+                } else if (!Character.isDigit(cur.charAt(i + 1)) && !isLeftParenthesis(cur.charAt(i + 1))){
                     return false;
                 }
             }

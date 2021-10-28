@@ -20,6 +20,7 @@ public class ShuntingYard
 
     public Queue<String> runShuntingYard(String string)
     {
+
         Queue<String> cur = convertString(string);
         Queue<String> res = new LinkedList<>();
 
@@ -54,13 +55,11 @@ public class ShuntingYard
             }
             if(!op.isEmpty())
             {
-
-
                 String look = op.peek();
 
                 if(map.containsKey(look))
                 {
-                    while(!op.isEmpty() && (map.get(look) < map.get(s) || map.get(look) < map.get(s)))
+                    while(!op.isEmpty() && (map.get(s) < map.get(look) || map.get(look).equals(map.get(s))))
                     {
                         res.add(look);
                         op.pop();
@@ -100,7 +99,7 @@ public class ShuntingYard
             }
             if (c == '-') {
                 if (i - 1 >= 0 && i + 1 < s.length()) {
-                    if (Character.isDigit(s.charAt(i - 1)) && Character.isDigit(s.charAt(i - 1))) {
+                    if (Character.isDigit(s.charAt(i - 1)) && Character.isDigit(s.charAt(i + 1))) {
                         q.add(String.valueOf(c));
                         continue;
                     }
