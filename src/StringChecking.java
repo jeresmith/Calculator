@@ -7,6 +7,7 @@ class StringChecking
 
    public final Set<Character> s;
     public final Set<Character> operators;
+    public final Set<Character> trig;
 
    public StringChecking()
    {
@@ -32,12 +33,16 @@ class StringChecking
        s.add('[');
        s.add(']');
        s.add('^');
+       s.add('s');
 
        operators = new HashSet<>();
        operators.add('+');
        operators.add('/');
        operators.add('*');
        operators.add('^');
+
+       trig = new HashSet<>();
+       trig.add('s');
    }
    public boolean checkForAll(String cur){
        boolean check = true;
@@ -177,9 +182,12 @@ class StringChecking
                 {
                     return false;
                 }
-
-                else if (!Character.isDigit(cur.charAt(i - 1)) || (!Character.isDigit(cur.charAt(i + 1))
-                        && cur.charAt(i + 1) != '-') ){
+                // turn first check to && instead of ||
+                // how to simplify this check
+                else if ((!Character.isDigit(cur.charAt(i - 1)) && !isLeftParenthesis(cur.charAt(i - 1))) ||
+                        ((!Character.isDigit(cur.charAt(i + 1))
+                        && (cur.charAt(i + 1) != '-' && !Character.isDigit(cur.charAt(i + 2))))
+                                && !isRightParenthesis(cur.charAt(i + 1)))){
                     return false;
                 }
             }
@@ -192,6 +200,27 @@ class StringChecking
                 }
             }
         }
+        return true;
+    }
+
+    public boolean checkTrig (String s)
+    {
+        for (int i = 0; i < s.length(); i++)
+        {
+            char cur = s.charAt(i);
+            if (trig.contains(cur))
+            {
+                if (i == s.length() - 1)
+                {
+                    return false;
+                }
+                else if(!isLeftParenthesis(s.charAt(i + 1)))
+                {
+                    return false;
+                }
+            }
+        }
+
         return true;
     }
 

@@ -8,6 +8,7 @@ public class ShuntingYard
 {
     StringChecking stringCheck = new StringChecking();
     Map<String, Integer> map = new HashMap<>();
+    boolean[] associativeness = new boolean[3];
     public ShuntingYard()
     {
         map.put("+", 1);
@@ -15,6 +16,9 @@ public class ShuntingYard
         map.put("*", 2);
         map.put("/", 2);
         map.put("^", 3);
+        associativeness[0] = true;
+        associativeness[1] = true;
+        associativeness[2] = false;
 
     }
 
@@ -59,7 +63,8 @@ public class ShuntingYard
 
                 if(map.containsKey(look))
                 {
-                    while(!op.isEmpty() && (map.get(s) < map.get(look) || map.get(look).equals(map.get(s))))
+                    // At the end the assosiativeness is if its a power ^ symbol we treat is different
+                    while(!op.isEmpty() && (map.get(s) < map.get(look) || (map.get(look).equals(map.get(s)) && !associativeness[map.get(look)])))
                     {
                         res.add(look);
                         op.pop();
@@ -92,7 +97,7 @@ public class ShuntingYard
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
 
-            if (stringCheck.operators.contains(c) || stringCheck.isParenthesis(c)) {
+            if (stringCheck.operators.contains(c) || stringCheck.isParenthesis(c) || stringCheck.trig.contains(c)) {
                 String current = String.valueOf(c);
                 q.add(current);
                 continue;
