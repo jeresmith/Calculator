@@ -230,5 +230,10 @@ class StringChecking
         return true;
     }
 
+    public boolean validTrig (String s)
+    {
+        return trig.contains(s.charAt(0));
+    }
+
 
 }

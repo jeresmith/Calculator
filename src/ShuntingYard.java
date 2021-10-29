@@ -34,19 +34,23 @@ public class ShuntingYard
         {
             String s = cur.poll();
 
+
             if(isDouble(s))
             {
+
                 res.add(s);
             }
 
             else if(isLeftParenthesis(s))
             {
+
                 op.add(s);
 
             }
 
             else if(isRightParenthesis(s))
             {
+
                 String looking = op.pop();
 
                 while(!isLeftParenthesis(looking))
@@ -56,18 +60,31 @@ public class ShuntingYard
                 }
 
             }
-            else if(!op.isEmpty())
+            else if(isTrig(s))
+            {
+                System.out.println(s);
+                op.add(s);
+            }
+
+            else if(!op.isEmpty() && map.containsKey(s))
             {
                 String look = op.peek();
+//                System.out.println(look);
 
-                if(map.containsKey(look))
+                if(map.containsKey(look) && map.containsKey(s))
                 {
+                    System.out.println(s);
+                    System.out.println(look);
                     // At the end the assosiativeness is if its a power ^ symbol we treat is different
-                    while(!op.isEmpty() && (map.get(s) < map.get(look) || (map.get(look).equals(map.get(s)) && !associativeness[map.get(look)])))
+                    while(!op.isEmpty() && map.containsKey(look))
                     {
-                        res.add(look);
-                        op.pop();
-
+                        if (map.get(s) < map.get(look) || (map.get(look).equals(map.get(s)) && !associativeness[map.get(look)])) {
+                            res.add(look);
+                            op.pop();
+                        }
+                        else {
+                            break;
+                        }
                         if(!op.isEmpty()){
                             look = op.peek();
                         }
@@ -77,6 +94,7 @@ public class ShuntingYard
                 op.add(s);
             }
             else{
+
                 op.add(s);
             }
         }
@@ -189,6 +207,10 @@ public class ShuntingYard
             check = false;
         }
         return check;
+    }
+    public boolean isTrig(String s)
+    {
+        return stringCheck.validTrig(s);
     }
 
     public boolean isLeftParenthesis(String s)
