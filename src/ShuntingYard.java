@@ -37,16 +37,15 @@ public class ShuntingYard
             if(isDouble(s))
             {
                 res.add(s);
-                continue;
             }
 
-            if(isLeftParenthesis(s))
+            else if(isLeftParenthesis(s))
             {
                 op.add(s);
-                continue;
+
             }
 
-            if(isRightParenthesis(s))
+            else if(isRightParenthesis(s))
             {
                 String looking = op.pop();
 
@@ -55,9 +54,9 @@ public class ShuntingYard
                     res.add(looking);
                     looking = op.pop();
                 }
-                continue;
+
             }
-            if(!op.isEmpty())
+            else if(!op.isEmpty())
             {
                 String look = op.peek();
 
@@ -74,9 +73,8 @@ public class ShuntingYard
                         }
 
                     }
-                    op.add(s);
-
                 }
+                op.add(s);
             }
             else{
                 op.add(s);
@@ -195,10 +193,10 @@ public class ShuntingYard
 
     public boolean isLeftParenthesis(String s)
     {
-        return s == "(" || s == "{" || s == "[";
+        return s.equals("(") || s.equals("{") || s.equals("[");
     }
     public boolean isRightParenthesis(String s)
     {
-        return s == ")" || s == "}" || s == "]";
+        return s.equals(")") || s.equals("}") || s.equals("]");
     }
 }

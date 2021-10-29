@@ -67,6 +67,11 @@ class StringChecking
            System.out.println("validOperator Failed");
            check = false;
        }
+       if (!checkTrig(cur))
+       {
+           System.out.println("Trig function Failed");
+           check = false;
+       }
 
        return check;
 
@@ -104,6 +109,10 @@ class StringChecking
            }
        }
        return stack.isEmpty();
+    }
+    public boolean isOperator (char c)
+    {
+        return operators.contains(c);
     }
 
     public boolean isParenthesis(char c)
@@ -184,10 +193,7 @@ class StringChecking
                 }
                 // turn first check to && instead of ||
                 // how to simplify this check
-                else if ((!Character.isDigit(cur.charAt(i - 1)) && !isLeftParenthesis(cur.charAt(i - 1))) ||
-                        ((!Character.isDigit(cur.charAt(i + 1))
-                        && (cur.charAt(i + 1) != '-' && !Character.isDigit(cur.charAt(i + 2))))
-                                && !isRightParenthesis(cur.charAt(i + 1)))){
+                else if (isOperator(cur.charAt(i - 1)) || isOperator(cur.charAt(i + 1))){
                     return false;
                 }
             }
@@ -210,7 +216,7 @@ class StringChecking
             char cur = s.charAt(i);
             if (trig.contains(cur))
             {
-                if (i == s.length() - 1)
+                if (i > s.length() - 4)
                 {
                     return false;
                 }
