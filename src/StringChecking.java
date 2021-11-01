@@ -5,7 +5,7 @@ import java.util.Stack;
 class StringChecking
 {
 
-   public  Set<Character> s;
+    public  Set<Character> s;
     public  Set<Character> operators;
     public  Set<Character> trig;
 
@@ -34,6 +34,22 @@ class StringChecking
        s.add(']');
        s.add('^');
        s.add('s');
+       s.add('c');
+       s.add('t');
+       // Cot
+       s.add('k');
+       // arcSin
+       s.add('a');
+       // arccos
+       s.add('x');
+       // arcTan
+       s.add('n');
+       // arcTg
+       s.add('r');
+       // ln
+       s.add('l');
+       // log
+       s.add('g');
 
        operators = new HashSet<>();
        operators.add('+');

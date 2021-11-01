@@ -65,6 +65,40 @@ public class ReversePolish {
         {
             return Math.sin(a);
         }
+        if (isCos(op))
+        {
+            return Math.cos(a);
+        }
+        if (isTan(op))
+        {
+            return Math.tan(a);
+        }
+        // Check this funtion
+//        if (isCot(op))
+//        {
+//            return -1;
+//        }
+        if (isArcSin(op))
+        {
+            return Math.asin(a);
+        }
+        if (isArcCos(op))
+        {
+            return Math.acos(a);
+        }
+        if (isArcTan(op))
+        {
+            return Math.atan(a);
+        }
+        if (isArcTan(op))
+        {
+            return Math.atan(a);
+        }
+        // Check this function
+//        if (isArcTg(op))
+//        {
+//            return -1;
+//        }
         if(isNaturalLog(op))
         {
             return Math.log(a);
@@ -79,6 +113,34 @@ public class ReversePolish {
     public boolean isSin(String trig)
     {
         return trig.equals("s");
+    }
+    public boolean isCos(String trig)
+    {
+        return trig.equals("c");
+    }
+    public boolean isTan(String trig)
+    {
+        return trig.equals("t");
+    }
+    public boolean isCot(String trig)
+    {
+        return trig.equals("k");
+    }
+    public boolean isArcSin(String trig)
+    {
+        return trig.equals("a");
+    }
+    public boolean isArcCos(String trig)
+    {
+        return trig.equals("x");
+    }
+    public boolean isArcTan(String trig)
+    {
+        return trig.equals("n");
+    }
+    public boolean isArcTg(String trig)
+    {
+        return trig.equals("r");
     }
     public boolean isNaturalLog(String trig)
     {

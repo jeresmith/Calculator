@@ -8,7 +8,7 @@ public class Main {
          ShuntingYard s = new ShuntingYard();
          ReversePolish rev = new ReversePolish();
 
-         String ss = "1+2^2*3/2+s(3)";
+         String ss = "s(5+3)";
 
          if (c.checkForAll(ss))
          {
