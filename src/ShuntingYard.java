@@ -66,7 +66,6 @@ public class ShuntingYard
             }
             else if(isTrig(s))
             {
-                System.out.println(s);
                 op.add(s);
             }
 

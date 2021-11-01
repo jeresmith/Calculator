@@ -43,6 +43,22 @@ class StringChecking
 
        trig = new HashSet<>();
        trig.add('s');
+       trig.add('c');
+       trig.add('t');
+       // Cot
+       trig.add('k');
+       // arcSin
+       trig.add('a');
+       // arccos
+       trig.add('x');
+       // arcTan
+       trig.add('n');
+       // arcTg
+       trig.add('r');
+       // ln
+       trig.add('l');
+       // log
+       trig.add('g');
    }
    public boolean checkForAll(String cur){
        boolean check = true;
