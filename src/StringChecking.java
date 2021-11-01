@@ -5,9 +5,9 @@ import java.util.Stack;
 class StringChecking
 {
 
-   public final Set<Character> s;
-    public final Set<Character> operators;
-    public final Set<Character> trig;
+   public  Set<Character> s;
+    public  Set<Character> operators;
+    public  Set<Character> trig;
 
    public StringChecking()
    {

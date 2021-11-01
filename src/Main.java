@@ -6,12 +6,16 @@ public class Main {
 
          StringChecking c = new StringChecking();
          ShuntingYard s = new ShuntingYard();
+         ReversePolish rev = new ReversePolish();
 
-         String ss = "2/(3)*(2+(3/2+(3)))";
-         if(c.checkForAll(ss)){
+         String ss = "";
+         if (c.checkForAll(ss))
+         {
              Queue<String> l = s.runShuntingYard(ss);
              Queue<String> k = s.convertString(ss);
-             System.out.println(l);
+             double res = rev.runAlgorithm(l);
+             System.out.println(res);
+
          }
     }
 }

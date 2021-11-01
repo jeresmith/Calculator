@@ -58,6 +58,10 @@ public class ShuntingYard
                     res.add(looking);
                     looking = op.pop();
                 }
+                if(!op.isEmpty() && isTrig(op.peek()))
+                {
+                    res.add(op.pop());
+                }
 
             }
             else if(isTrig(s))
@@ -69,12 +73,10 @@ public class ShuntingYard
             else if(!op.isEmpty() && map.containsKey(s))
             {
                 String look = op.peek();
-//                System.out.println(look);
 
                 if(map.containsKey(look) && map.containsKey(s))
                 {
-                    System.out.println(s);
-                    System.out.println(look);
+
                     // At the end the assosiativeness is if its a power ^ symbol we treat is different
                     while(!op.isEmpty() && map.containsKey(look))
                     {
@@ -133,61 +135,28 @@ public class ShuntingYard
 
             }
 
-
             int j = i;
-
-            while (j != s.length() - 1)
+            while (j != s.length())
             {
-
+                c = s.charAt(j);
                 if (j == i && c == '-')
                 {
                     j++;
-                    c = s.charAt(j);
-                    System.out.println(j);
-                    continue;
 
                 }
-                if ((Character.isDigit(c) || c == '.'))
+                else if ((Character.isDigit(c) || c == '.'))
                 {
                     j++;
-                    c = s.charAt(j);
 
-                    continue;
-                }
-                break;
-            }
-
-                boolean end = j == s.length() - 1;
-
-            boolean incremented = false;
-                if (end && stringCheck.isParenthesis(s.charAt(j))) {
-                    j = j;
-                }
-                else if (end && Character.isDigit(s.charAt(j))) {
-                    j = j + 1;
-                    incremented = true;
                 } else {
-                    j = j;
+                    break;
                 }
+
+            }
 
                 String subString = s.substring(i, j);
                 q.add(subString);
-                if(!incremented)
-                {
-
-                    if (end && stringCheck.isParenthesis(s.charAt(j)))
-                    {
-                        i = j - 1;
-                    }
-                }
-                    else if (end && Character.isDigit(s.charAt(j - 1)))
-                    {
-                        i = j;
-                    } else {
-                        i = j - 1;
-                    }
-
-
+                i = j - 1;
 
         }
 
