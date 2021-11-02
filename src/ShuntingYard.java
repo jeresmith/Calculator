@@ -125,6 +125,11 @@ public class ShuntingYard
                         q.add(String.valueOf(c));
                         continue;
                     }
+                    if(isLeftParenthesis(s.substring(i-1,i)) && isLeftParenthesis(s.substring(i+1, i+2)))
+                    {
+                        q.add("u-");
+                        continue;
+                    }
 
                     if(map.containsKey(s.substring(i-1,i)) || (s.charAt(i-1) == '-' && s.charAt(i + 1) != '-'))
                     {
