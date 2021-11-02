@@ -1,4 +1,4 @@
-import java.sql.PreparedStatement;
+
 import java.util.HashSet;
 import java.util.Queue;
 import java.util.Set;
@@ -26,6 +26,7 @@ public class ReversePolish {
         trigSet.add("r");
         trigSet.add("l");
         trigSet.add("g");
+        trigSet.add("u-");
     }
 
     public double runAlgorithm(Queue<String> q)
@@ -61,6 +62,10 @@ public class ReversePolish {
     }
     public double performTrig(double a, String op)
     {
+        if (unaryNegativ(op))
+        {
+            return (a * -1);
+        }
         if (isSin(op))
         {
             return Math.sin(a);
@@ -109,7 +114,10 @@ public class ReversePolish {
         }
         return -1;
     }
-
+    public boolean unaryNegativ(String trig)
+    {
+        return trig.equals("u-");
+    }
     public boolean isSin(String trig)
     {
         return trig.equals("s");

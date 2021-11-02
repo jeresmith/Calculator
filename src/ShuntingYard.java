@@ -1,14 +1,12 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
-import java.util.Map;
+import java.util.*;
 
 public class ShuntingYard
 {
     StringChecking stringCheck = new StringChecking();
     Map<String, Integer> map = new HashMap<>();
+    Set<String> trig = new HashSet<>();
     boolean[] associativeness = new boolean[3];
+
     public ShuntingYard()
     {
         map.put("+", 1);
@@ -19,6 +17,8 @@ public class ShuntingYard
         associativeness[0] = true;
         associativeness[1] = true;
         associativeness[2] = false;
+        trig.add("u-");
+
 
     }
 
@@ -121,16 +121,34 @@ public class ShuntingYard
             }
             if (c == '-') {
                 if (i - 1 >= 0 && i + 1 < s.length()) {
-                    if (Character.isDigit(s.charAt(i - 1)) && Character.isDigit(s.charAt(i + 1))) {
+                    if ((Character.isDigit(s.charAt(i - 1)) || isRightParenthesis(s.substring(i-1,i))) && (Character.isDigit(s.charAt(i + 1)) || stringCheck.trig.contains(s.charAt(i+1)) || isLeftParenthesis(s.substring(i+1,i+2)))) {
                         q.add(String.valueOf(c));
                         continue;
                     }
 
+                    if(map.containsKey(s.substring(i-1,i)) || (s.charAt(i-1) == '-' && s.charAt(i + 1) != '-'))
+                    {
+                        q.add("u-");
+                        continue;
+                    }
+
                 }
-                if (stringCheck.isParenthesis(s.charAt(i + 1))) {
-                    q.add(String.valueOf(c));
-                    continue;
+                if (i + 1 < s.length()) {
+                    if (stringCheck.isParenthesis(s.charAt(i + 1))) {
+                        q.add(String.valueOf(c));
+                        continue;
+                    }
                 }
+
+                if (i + 3 < s.length())
+                {
+                    if (stringCheck.trig.contains(s.charAt(i+1)))
+                    {
+                        q.add("u-");
+                        continue;
+                    }
+                }
+
 
             }
 

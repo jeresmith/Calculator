@@ -11,7 +11,8 @@ class StringChecking
 
    public StringChecking()
    {
-       s = new HashSet<Character>();
+       s = new HashSet<>();
+
        s.add('1');
        s.add('2');
        s.add('3');
@@ -76,6 +77,7 @@ class StringChecking
        // log
        trig.add('g');
    }
+
    public boolean checkForAll(String cur){
        boolean check = true;
        if (!checkValid(cur))
@@ -233,9 +235,15 @@ class StringChecking
             {
                 if(i == cur.length() - 1){
                     return false;
-                } else if (!Character.isDigit(cur.charAt(i + 1)) && !isLeftParenthesis(cur.charAt(i + 1))){
-                    return false;
                 }
+                if (i < cur.length() - 1)
+                {
+                    if (operators.contains(cur.charAt(i + 1)))
+                    {
+                    return false;
+                    }
+                }
+
             }
         }
         return true;
