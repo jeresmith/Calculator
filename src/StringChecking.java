@@ -233,6 +233,13 @@ class StringChecking
             }
             else if (c == '-')
             {
+                if (i > 0 && i < cur.length()-1)
+                {
+                    if(cur.charAt(i - 1) == c && cur.charAt(i + 1) == c)
+                    {
+                        return false;
+                    }
+                }
                 if(i == cur.length() - 1){
                     return false;
                 }

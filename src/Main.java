@@ -17,11 +17,13 @@ public class Main {
         System.out.println("-----------");
         System.out.println("No spaces");
         System.out.println("-----------");
+        System.out.println("Multiplication needs * and not just (1)(2)");
+        System.out.println("-----------");
         System.out.println("Unary and trig functions require parenthesis");
         System.out.println("-----------");
         System.out.println();
     }
-    
+
     public static void game()
     {
         Scanner keyboard = new Scanner(System.in);
@@ -39,7 +41,11 @@ public class Main {
             System.out.print(">> ");
             input = keyboard.nextLine();
             System.out.println();
-            if (input.equals("e"))
+            if (input.equals(""))
+            {
+                continue;
+            }
+            else if (input.equals("e"))
             {
                 exit = true;
                 continue;

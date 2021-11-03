@@ -79,10 +79,10 @@ public class ReversePolish {
             return Math.tan(a);
         }
         // Check this funtion
-//        if (isCot(op))
-//        {
-//            return -1;
-//        }
+        if (isCot(op))
+        {
+            return 1.0/ Math.tan(a);
+        }
         if (isArcSin(op))
         {
             return Math.asin(a);
@@ -95,15 +95,12 @@ public class ReversePolish {
         {
             return Math.atan(a);
         }
-        if (isArcTan(op))
-        {
-            return Math.atan(a);
-        }
+
         // Check this function
-//        if (isArcTg(op))
-//        {
-//            return -1;
-//        }
+        if (isArcTg(op))
+        {
+            return Math.atan(1.0 / performTrig(a, "k"));
+        }
         if(isNaturalLog(op))
         {
             return Math.log(a);
