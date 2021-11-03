@@ -9,6 +9,7 @@ RUNNING PROGRAM LOCALLY
 3.) Once the terminal is inside the src folder run the following commands: 
 
 javac Main.java
+
 java Main
 
 4.) After the program will start running from the terminal
